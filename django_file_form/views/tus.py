@@ -54,7 +54,7 @@ class TusUpload(View):
         if request.META.get("HTTP_TUS_RESUMABLE", None) is None:
             return HttpResponse(status=405, content="Method Not Allowed")
 
-        for kv in request.META.get("HTTP_UPLOAD_METADATA", None).split(","):
+        for kv in request.META.get("HTTP_UPLOAD_METADATA", "").split(","):
             (key, value) = kv.split(" ")
             metadata[key] = base64.b64decode(value)
 
