@@ -16,12 +16,31 @@
         id="example-form"
     >
         {% csrf_token %}
-        {{ form }}
-        <input class="btn btn-primary" type="submit" value="Save" />
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+        {{ form.non_field_errors }}
+        <div id="row-example-input_title">
+            {{ form.title.errors }}
+            <label for="{{ form.title.id_for_label }}">Title</label>
+            {{ form.title }}
+        </div>
+
+        <div id="row-example-input_file" {% if form.input_file.errors %} class="has-error" {% endif %}>
+            {{ form.input_file.errors }}
+            {{ form.input_file }}
+        </div>
+        {% block extra_fields %}
+        {% endblock %}
+        <input type="submit" value="Save" />
     </form>
 
+    <div id="messages"></div>
+
     {% if use_ajax %}
-        <script src="{% static "file_form/file_form.js" %}"></script>
-        <script src="{% static "example_form.js" %}"></script>
+        <script src="{% static file_form_js|safe %}"></script>
+        {% for js_file in custom_js_files %}
+            <script src="{% static js_file %}"></script>
+        {% endfor %}
     {% endif %}
 {% endblock %}

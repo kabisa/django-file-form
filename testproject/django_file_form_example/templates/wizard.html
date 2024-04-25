@@ -4,6 +4,9 @@
 {% block title %}Wizard example{% endblock %}
 
 {% block body %}
+    <div>
+        Page {{ wizard.steps.step1 }}
+    </div>
     <form
         method="POST"
         enctype="multipart/form-data"
@@ -15,9 +18,9 @@
         {% if wizard.steps.prev %}
             <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">Previous</button>
         {% endif %}
-        <input class="btn btn-primary" type="submit" value="Submit" />
+        <input type="submit" value="Submit" />
     </form>
 
-    <script src="{% static "file_form/file_form.js" %}"></script>
+    <script src="{% static file_form_js|safe %}"></script>
     <script src="{% static "wizard_form.js" %}"></script>
 {% endblock %}

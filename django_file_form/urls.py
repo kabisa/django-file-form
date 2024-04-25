@@ -1,8 +1,7 @@
-from django.conf.urls import url
-from .views.tus import TusUpload
+from django.urls import include, path
 
 
-urlpatterns = (
-    url(r'^upload/$', TusUpload.as_view(), name='tus_upload'),
-    url(r'^upload/(?P<resource_id>[0-9a-z-]+)$', TusUpload.as_view(), name='tus_upload_chunks'),
-)
+urlpatterns = [
+    path("upload/", include("django_file_form.tus.urls")),
+    path("s3upload/", include("django_file_form.s3_multipart.urls")),
+]

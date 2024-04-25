@@ -1,11 +1,11 @@
 from django.contrib import admin
 
-from . import models
+from .models import TemporaryUploadedFile
 
 
-class UploadedFileAdmin(admin.ModelAdmin):
-    list_display = ['original_filename', 'created']
-    date_hierarchy = 'created'
+class TemporaryUploadedFileAdmin(admin.ModelAdmin):
+    list_display = ["original_filename", "created"]
+    date_hierarchy = "created"
 
 
-admin.site.register(models.UploadedFile, UploadedFileAdmin)
+admin.site.register(TemporaryUploadedFile, TemporaryUploadedFileAdmin)

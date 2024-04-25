@@ -1,35 +1,36 @@
 {
-    "extends": "airbnb",
-    "parser": "babel-eslint",
-    "rules": {
-        "arrow-parens": 0,
-        "brace-style": 0,
-        "camelcase": 0,
-        "comma-dangle": 0,
-        "default-case": 0,
-        "func-names": 0,
-        "function-paren-newline": 0,
-        "id-length": 0,
-        "implicit-arrow-linebreak": 0,
-        "indent": 0,
-        "max-classes-per-file": 0,
-        "max-len": 0,
-        "new-cap": 0,
-        "no-confusing-arrow": 0,
-        "no-console": 0,
-        "no-else-return": 0,
-        "no-new": 0,
-        "no-unused-vars": [
-            "error",
-            { "varsIgnorePattern": "initUploadFields" }
-        ],
-        "no-use-before-define": 0,
-        "one-var": 0,
-        "object-curly-newline": 0,
-        "react/jsx-boolean-value": 0,
-        "react/no-multi-comp": 0,
-        "react/sort-comp": 0,
-        "quotes": [2, "double", "avoid-escape"],
-        "space-before-function-paren": 0
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "import"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:import/recommended",
+    "plugin:import/typescript"
+  ],
+  "rules": {
+    "import/no-named-as-default": "off"
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "settings": {
+    "import/parsers": {
+        "@typescript-eslint/parser": [".ts"]
+    },
+    "import/resolver": {
+        "typescript": {
+            "alwaysTryTypes": true,
+            "project": "./tsconfig.json"
+        }
     }
+  }
 }

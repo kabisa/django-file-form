@@ -1,6 +1,5 @@
-pytz==2019.3
-https://github.com/mozilla/django-csp/archive/master.zip
-
-# bootstrap3 form
-django-bootstrap3-form==1.0.0
-django-pony-forms==1.0.0
+pytz==2024.1
+django-csp==3.8
+boto3==1.34.23
+django-formtools==2.5.1
+django-storages==1.14.2

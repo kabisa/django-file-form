@@ -1,0 +1,22 @@
+{
+  "compileOnSave": false,
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "lib": ["DOM", "DOM.Iterable", "ES2018"],
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": false,
+    "strict": true,
+    "paths": {
+      "tus-js-client/lib/browser/index.js": ["./node_modules/tus-js-client"]
+    }
+  }
+}
