@@ -57,6 +57,15 @@ def start_upload(request):
     file_size = int(request.META.get("HTTP_UPLOAD_LENGTH", "0"))
     resource_id = str(uuid.uuid4())
 
+    if file_size > conf.MAX_FILE_SIZE:
+        error_message = (
+            "Received file upload which exceeds the allowed total upload limit"
+        )
+        logger.warning(error_message)
+        response.status_code = 400
+        response.reason_phrase = error_message
+        return response
+
     cache.add(
         "tus-uploads/{}/filename".format(resource_id),
         metadata.get("filename"),
